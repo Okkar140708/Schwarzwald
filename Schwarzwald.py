@@ -1,11 +1,3 @@
-'''
-first game random knowledge quiz
-
-IN the first step beginning, I wanna show, some text, then ask directions(left or right), then pop up the quiz
-
-fix the damn exit error
-
-'''
 import time
 from inputimeout import inputimeout, TimeoutOccurred
 import sys
