@@ -2,15 +2,31 @@ import time
 from inputimeout import inputimeout, TimeoutOccurred
 import sys
 import random
-
-
+import webbrowser
 
 def show_dots(numdots):
-    for i in range(numdots):
+    for i in range(numdots): 
         print(".", end ="", flush=True)
         time.sleep(0.5)
     print()
 
+def handle_loss():
+   
+    """Handles the case when the user loses and decides whether to exit or restart."""
+    print("Unfortunately, you have lost this game!")
+    choice4lose = input("Would you like to exit or go back to menu and restart the game? (Exit/Menu)\n>> ")
+    if choice4lose.lower() == "exit":
+        print("Have a nice day!!")
+        sys.exit()
+        
+    elif choice4lose.lower() == "menu":
+        return
+    else:
+        print("Invalid input! Retype either 'Exit' or 'Menu'")
+
+def exit():
+    print("Goodbye. Hope to see you again! (^人^) ")
+    
 player_name = ""
 def start():
     global player_name
@@ -32,8 +48,6 @@ def start():
             print("Alright!! We can wait until you are reasy.\n Just retype Yes here when you are ready")
         else:
             print("Please reenter Yes or NO")
-
-        
 
 def exploring():
     global player_name
@@ -74,9 +88,19 @@ def gift4winnner():
     global player_name
     print(f"{player_name} Huge Congratulation on completing this Schwarzwald")
     time.sleep(1.4)
-    print("Here is a gift for you \n ")
-    print("https://youtu.be/dQw4w9WgXcQ?si=-25_K22Gxl_lIiuy")
-    pass
+    
+    giftYT = "https://youtu.be/dQw4w9WgXcQ?si=-25_K22Gxl_lIiuy" # link to the gift video
+    print("Here is a gift for you (≧∇≦)ﾉ")
+    finalready = ""
+    # keep asking a player until he or she is ready
+    while finalready != 'yes':
+        finalready = input("Are you ready for the gift? (please type 'Yes' only when you are ready) : ")
+        if finalready.lower() == 'yes':
+            show_dots(5)
+            webbrowser.open(giftYT)
+            break
+        else:
+            print("Invalid input!\nPlease retype 'Yes'. ")
 
 def third_stage():
    
@@ -171,7 +195,7 @@ def third_stage():
                         if check_winner(board, computer):
                             display_board(board)
                             print("Computer wins!")
-                            handle_loss4firststage() # a player loses if a computer wins
+                            handle_loss() # a player loses if a computer wins
                             game_over = True
                             break
                         first_turn = 'player'
@@ -187,7 +211,7 @@ def third_stage():
                     print(f"You still have {3-attempts} chance/chances to win this game")
                 else:
                     print("You have used all your chances. Therefore, unforutnately, you lose the game")
-                    handle_loss4firststage()
+                    handle_loss()
                     break
 
             # if player is still not ready
@@ -225,7 +249,7 @@ def memory_game4secondstage():
         print(sequence)
         time.sleep(2.5)
         
-        # Push the numbers off the screen by printing multiple new lines
+        # push the numbers off the screen by printing multiple new lines
         print("\n"*50)
 
         # Ask for the user input as a list of integers
@@ -238,7 +262,7 @@ def memory_game4secondstage():
             return True
         else:
             print(f"You are wrong! The correct sequence was: {' '.join(map(str, sequence))}")
-            handle_loss4firststage()
+            handle_loss()
             return False
 
     print("Be Ready! There will be 3 levels that you will have to complete!")
@@ -251,9 +275,6 @@ def memory_game4secondstage():
             # Move to Level 3 if Level 2 is correct
             levels(3, 7)
             print("You have successfully completed level 2. (￣、￣)\nNow, let's continue the journey! (〃￣︶￣)人(￣︶￣〃)")
-
-
-    
 
 def second_stage():
     print(f"Welcome to the second stage {player_name} !  Keep going ")
@@ -280,22 +301,6 @@ def second_stage():
         else:
             print("Please reenter Yes or NO")
     
-
-def handle_loss4firststage():
-   
-    """Handles the case when the user loses and decides whether to exit or restart."""
-    print("Unfortunately, you have lost this game!")
-    choice4lose = input("Would you like to exit or go back to menu and restart the game? (Exit/Menu)\n>> ")
-    if choice4lose.lower() == "exit":
-        print("Have a nice day!!")
-        sys.exit()
-        
-    elif choice4lose.lower() == "menu":
-        return
-    else:
-        print("Invalid input! Retype either 'Exit' or 'Menu'")
-
-
 def first_stage():
     
     while True:
@@ -316,7 +321,7 @@ def first_stage():
                         print("Now, let's go to the next stage.\n Be prepared !!!")
                         break 
                 else:
-                    handle_loss4firststage()
+                    handle_loss()
                     break
             except TimeoutOccurred:
                 # Handle the case when the user takes too long
@@ -333,7 +338,7 @@ def first_stage():
                         print("Now, let's go to the next stage.\n Be prepared !!!")
                         break
                     else:
-                        handle_loss4firststage()
+                        handle_loss()
                         break
                 # if user doesn't want hint   
                 elif hint.lower() == "no":
@@ -347,7 +352,7 @@ def first_stage():
                         print("Now, let's go to the next stage.\n Be prepared !!!")
                         break
                     else:
-                        handle_loss4firststage()
+                        handle_loss()
                         break
 
         elif Firststage.lower() == "left":
@@ -362,7 +367,7 @@ def first_stage():
                     print("Now, let's go to the next stage.\n Be prepared !!!")
                     break
                 else:
-                    handle_loss4firststage()
+                    handle_loss()
                     break
             except TimeoutOccurred:
                 # Handle the case when the user takes too long
@@ -379,7 +384,7 @@ def first_stage():
                         print("Now, let's go to the next stage.\n Be prepared !!!")
                         break
                     else:
-                        handle_loss4firststage()
+                        handle_loss()
                         break
                 # if user doesn't want hint   
                 elif hint.lower() == "no":
@@ -393,18 +398,11 @@ def first_stage():
                         print("Now, let's go to the next stage.\n Be prepared !!!")
                    
                     else:
-                        handle_loss4firststage()
+                        handle_loss()
                         break
         else:
             print(" Invalid input!! Please retype either Right or Left ")
             
-            
-        
-
-def exit():
-    print("Goodbye. Hope to see you again! (^人^) ")
-
-
 # main start
 def main_menu():
     while True:
@@ -423,4 +421,3 @@ def main_menu():
             print("Invalid input. Please rewrite either 1 or 2")
 
 main_menu()
-
