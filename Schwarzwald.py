@@ -20,7 +20,7 @@ def handle_loss():
         sys.exit()
         
     elif choice4lose.lower() == "menu":
-        return
+        main_menu()
     else:
         print("Invalid input! Retype either 'Exit' or 'Menu'")
 
