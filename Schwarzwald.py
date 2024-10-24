@@ -361,7 +361,7 @@ def first_stage():
                 # wait for 10 seconds for user input, otherwise trigger time out
                 pythonCountry = inputimeout(prompt="In which country was the Python programming language invented? : ", timeout=10)
                 print("You responded: ", pythonCountry)
-                if pythonCountry.lower() == "netherlands" or "the netherlands":
+                if pythonCountry.lower() == "netherlands" or pythonCountry.lower() == "the netherlands":
                     print("Yay!!! \n You have completed the first stage!")
                     time.sleep(1)
                     print("Now, let's go to the next stage.\n Be prepared !!!")
@@ -378,7 +378,7 @@ def first_stage():
                     pythonCountry = input("In which country was the Python programming language invented? : ")
                     print("You responded: ", pythonCountry)
                     #check if the answer is correct
-                    if pythonCountry.lower == "netherlands" or "the netherlands":
+                    if pythonCountry.lower == "netherlands" or pythonCountry.lower() ==  "the netherlands":
                         print("Yay!!! \n You have completed the first stage!")
                         time.sleep(2)
                         print("Now, let's go to the next stage.\n Be prepared !!!")
@@ -392,7 +392,7 @@ def first_stage():
                     pythonCountry = input("In which country was the Python programming language invented? : ")
                     print("You responded: ", pythonCountry)
                     #check if the answer is correct
-                    if pythonCountry.lower == "netherlands" or "the netherlands":
+                    if pythonCountry.lower == "netherlands" or pythonCountry.lower() == "the netherlands":
                         print("Yay!!! \n You have completed the first stage!")
                         time.sleep(2)
                         print("Now, let's go to the next stage.\n Be prepared !!!")
