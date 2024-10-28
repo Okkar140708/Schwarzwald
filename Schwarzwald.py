@@ -14,18 +14,22 @@ def handle_loss():
    
     """Handles the case when the user loses and decides whether to exit or restart."""
     print("Unfortunately, you have lost this game!")
-    choice4lose = input("Would you like to exit or go back to menu and restart the game? (Exit/Menu)\n>> ")
-    if choice4lose.lower() == "exit":
-        print("Have a nice day!!")
-        sys.exit()
-        
-    elif choice4lose.lower() == "menu":
-        main_menu()
-    else:
-        print("Invalid input! Retype either 'Exit' or 'Menu'")
+    choice4lose = None
+    while choice4lose not in ["exit","menu"]:
+        choice4lose = input("Would you like to exit or go back to menu and restart the game? (Exit/Menu)\n>> ")
+        if choice4lose.lower() == "exit":
+            print("Have a nice day!!")
+            sys.exit()
+            
+        elif choice4lose.lower() == "menu":
+            main_menu()
+        else:
+            print("Invalid input! Retype either 'Exit' or 'Menu'")
 
 def exit():
     print("Goodbye. Hope to see you again! (^人^) ")
+    sys.exit()
+    
     
 player_name = ""
 def start():
@@ -45,7 +49,7 @@ def start():
             break
         elif ready_start.lower() == "no":
             time.sleep(1.5)
-            print("Alright!! We can wait until you are reasy.\n Just retype Yes here when you are ready")
+            print("Alright!! We can wait until you are ready.\n Just retype Yes here when you are ready")
         else:
             print("Please reenter Yes or NO")
 
@@ -378,7 +382,7 @@ def first_stage():
                     pythonCountry = input("In which country was the Python programming language invented? : ")
                     print("You responded: ", pythonCountry)
                     #check if the answer is correct
-                    if pythonCountry.lower == "netherlands" or pythonCountry.lower() ==  "the netherlands":
+                    if pythonCountry.lower() == "netherlands" or pythonCountry.lower() == "the netherlands":
                         print("Yay!!! \n You have completed the first stage!")
                         time.sleep(2)
                         print("Now, let's go to the next stage.\n Be prepared !!!")
@@ -392,11 +396,11 @@ def first_stage():
                     pythonCountry = input("In which country was the Python programming language invented? : ")
                     print("You responded: ", pythonCountry)
                     #check if the answer is correct
-                    if pythonCountry.lower == "netherlands" or pythonCountry.lower() == "the netherlands":
+                    if pythonCountry.lower() == "netherlands" or pythonCountry.lower() == "the netherlands":
                         print("Yay!!! \n You have completed the first stage!")
                         time.sleep(2)
                         print("Now, let's go to the next stage.\n Be prepared !!!")
-                   
+                        break
                     else:
                         handle_loss()
                         break
