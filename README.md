@@ -1,1 +1,1 @@
-just my shitty mini game pj
+just my mini game pj
